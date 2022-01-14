@@ -1,13 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['email'])){
-header("location:../index");
-exit();
-
-
+if (!isset($_SESSION['email'])) {
+    header("location:../index");
+    exit();
 }
-
-
-
-
-?>

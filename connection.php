@@ -3,7 +3,7 @@ $host = 'localhost';
 $user = 'root';
 $pw = '';
 $ndb = 'dbwebapp';
-$con =  mysqli_connect($host,$user,$pw,$ndb);
+$con =  mysqli_connect($host, $user, $pw, $ndb);
 
 /*   if($con){
 
@@ -12,8 +12,3 @@ $con =  mysqli_connect($host,$user,$pw,$ndb);
 echo"non connected";
 }  
   */
-
-
-
-
-?>

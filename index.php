@@ -1,81 +1,82 @@
 <?php
 include("connection.php");
- $name = $email = $phone = $adresse= $service=    "";
+$name = $email = $phone = $adresse = $service =    "";
 
- $errname = $erremail = $errtel = $erradresse= $errservice=    "";
+$errname = $erremail = $errtel = $erradresse = $errservice =    "";
 $err_warningtel = 0;
 
 $err_warningemail = 0;
 
-$err_success =0;
-$t=1;$f=0;
+$err_success = 0;
+$t = 1;
+$f = 0;
 
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //variables
     $name = test_input($_POST["name-id"]);
     $email = test_input($_POST["email-id"]);
     $adresse = test_input($_POST["adresse-id"]);
     $phone = test_input($_POST["tel-id"]);
     $service = test_input($_POST["service-id"]);
-
 }
 
-function test_input($data) {
+function test_input($data)
+{
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
     return $data;
 }
-if($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-      //!!!!!!!phone validation IMPORTANT !!!!!!
-  if (empty($_POST["tel-id"])) {
-    $errtel = "tel is required";
-  } else {
-   
-     $select= mysqli_query($con,"SELECT id FROM block_liste WHERE tel ='".$_POST['tel-id']."'  ")
-     or exit(mysqli_error($con));
-if(mysqli_num_rows($select)) {
-  $errtel ='This tel is already being used';
+    //!!!!!!!phone validation IMPORTANT !!!!!!
+    if (empty($_POST["tel-id"])) {
+        $errtel = "tel is required";
+    } else {
 
-}}  // fin !!!!!!!!!!!  
+        $select = mysqli_query($con, "SELECT id FROM block_liste WHERE tel ='" . $_POST['tel-id'] . "'  ")
+            or exit(mysqli_error($con));
+        if (mysqli_num_rows($select)) {
+            $errtel = 'This tel is already being used';
+        }
+    }  // fin !!!!!!!!!!!  
 
-  //!!!!!!!email validation IMPORTANT !!!!!!
-  if (empty($_POST["email-id"])) {
-    $erremail = "Email is required";
-  } else {
-   
-     $select= mysqli_query($con,"SELECT id FROM block_liste WHERE email ='".$_POST['email-id']."'  ")
-     or exit(mysqli_error($con));
-if(mysqli_num_rows($select)) {
-  $erremail ='This email is already being used';
+    //!!!!!!!email validation IMPORTANT !!!!!!
+    if (empty($_POST["email-id"])) {
+        $erremail = "Email is required";
+    } else {
 
-}}  // fin !!!!!!!!!!!  
+        $select = mysqli_query($con, "SELECT id FROM block_liste WHERE email ='" . $_POST['email-id'] . "'  ")
+            or exit(mysqli_error($con));
+        if (mysqli_num_rows($select)) {
+            $erremail = 'This email is already being used';
+        }
+    }  // fin !!!!!!!!!!!  
 
-//after validation we insert DATA to our DATABASE
-$today = date("Y-m-d H:i:s");
-if($erremail != 'This email is already being used' && $errtel != 'This tel is already being used' )
-{$query = "INSERT INTO client (fullname,email,service_comercial,tel,adresse,block,valider_par,validation,afficher_dans_la_table)VALUE('$name','$email','$service','$phone','$adresse','$f','','$f','$t')";
-if(mysqli_query($con,$query)){
-    $err_success = 1 ;
-  header("location:continue-success.php");
-  }
-
-}else{
-if($erremail =='This email is already being used' ){
-$err_warningemail = 1 ;}else{$err_warningtel=1;}
+    //after validation we insert DATA to our DATABASE
+    $today = date("Y-m-d H:i:s");
+    if ($erremail != 'This email is already being used' && $errtel != 'This tel is already being used') {
+        $query = "INSERT INTO client (fullname,email,service_comercial,tel,adresse,block,valider_par,validation,afficher_dans_la_table)VALUE('$name','$email','$service','$phone','$adresse','$f','','$f','$t')";
+        if (mysqli_query($con, $query)) {
+            $err_success = 1;
+            header("location:continue-success.php");
+        }
+    } else {
+        if ($erremail == 'This email is already being used') {
+            $err_warningemail = 1;
+        } else {
+            $err_warningtel = 1;
+        }
+    }
 }
 
 
-}
 
 
 
-
- 
 ?>
 
 
@@ -94,17 +95,15 @@ $err_warningemail = 1 ;}else{$err_warningtel=1;}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="author" content="templatemo">
-  
+
     <meta charset="UTF-8">
 
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,300,600,700,800'
-        rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
-        type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 
     <!-- CSS Bootstrap & Custom -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/templatemo.css">
     <link rel="stylesheet" href="css/templatemo-misc.css">
     <link rel="stylesheet" href="css/animate.css">
@@ -112,33 +111,33 @@ $err_warningemail = 1 ;}else{$err_warningtel=1;}
 
     <!-- Favicons -->
     <link rel="shortcut icon" href="images/ico/favicon.ico">
-<!-- scroll barstyle  -->
-<!-- recaptcha -->
+    <!-- scroll barstyle  -->
+    <!-- recaptcha -->
 
-                      
-        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-<style>
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1; 
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #dc3045; 
-}
+    <style>
+        /* width */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555; 
-}
-</style>
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #dc3045;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
     <!-- JavaScripts -->
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/modernizr.js"></script>
@@ -150,33 +149,33 @@ $err_warningemail = 1 ;}else{$err_warningtel=1;}
 </head>
 
 <body>
-<?php  
+    <?php
 
-if($err_warningtel ==1){
+    if ($err_warningtel == 1) {
 
-    echo "<div class='alert' text-light role='alert'  style='background:#dc3045 ' >
+        echo "<div class='alert' text-light role='alert'  style='background:#dc3045 ' >
    votre tel a ete bloque  <a href='#telechargement' >voir plus  </a>
 
    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
    <span aria-hidden='true'>&times;</span>
  </button>
   </div>";
-}
-if($err_warningemail ==1){
+    }
+    if ($err_warningemail == 1) {
 
-    echo "<div class='alert text-light' role='alert'  style='background:#dc3045'>
+        echo "<div class='alert text-light' role='alert'  style='background:#dc3045'>
    votre email a ete bloque  <a href='#telechargement' >voir plus  </a>
   </div>";
-}
-if($err_success ==1){
+    }
+    if ($err_success == 1) {
 
-    echo "<div class='alert alert-success' role='alert'>
+        echo "<div class='alert alert-success' role='alert'>
 congratulations 
   </div>";
-}
+    }
 
 
-?>
+    ?>
     <div id="home">
         <div class="site-header">
             <div class="top-header">
@@ -185,7 +184,7 @@ congratulations
                         <div class="col-md-6 col-sm-6">
                             <div class="left-header">
                                 <span><i class="fa fa-phone"></i>0770 601 199</span>
-                                <span><i  class="fad fa-envelope-square"></i>infodz@contact.com</span>
+                                <span><i class="fad fa-envelope-square"></i>infodz@contact.com</span>
                             </div> <!-- /.left-header -->
                         </div> <!-- /.col-md-6 -->
                         <div class="col-md-6 col-sm-6">
@@ -205,7 +204,7 @@ congratulations
                     <div class="row">
                         <div class="">
                             <div class="logo">
-                                <h1><a href="#" title="Dreri"><i class="fad fa-user" ></i></a></h1>
+                                <h1><a href="#" title="Dreri"><i class="fad fa-user"></i></a></h1>
                             </div> <!-- /.logo -->
                         </div> <!-- /.col-md-4 -->
                         <div class=" ">
@@ -214,10 +213,10 @@ congratulations
                                     <li><a href="#home">Accueil</a></li>
                                     <li><a href="#services">Services</a></li>
                                     <li><a href="#portfolio">Portfolio</a></li>
-                                 
-                                    <li><a href="#telechargement" >telechargement</a></li>
+
+                                    <li><a href="#telechargement">telechargement</a></li>
                                     <li><a href="#contact">Contact</a></li>
-                                     <li><a href="loginadmin"  class="external">revendeur ?</a></li>
+                                    <li><a href="loginadmin" class="external">revendeur ?</a></li>
                                 </ul>
                             </div> <!-- /.menu -->
                         </div> <!-- /.col-md-8 -->
@@ -250,12 +249,12 @@ congratulations
                     <h2 style="font-size: 35px; line-height: 40px;">SOLUTION POINTS DE VENTES<br> MATÉRIEL ET LOGICIEL
                         POINT DE VENTE</h2>
                     <span></span>
-                    <p>Société infodz avec plus de 10 ans d'expérience dans le 
-Développement web et développement de logiciels,<br> nous vous accompagnons dans la mise en œuvre de vos projets
-</p>
+                    <p>Société infodz avec plus de 10 ans d'expérience dans le
+                        Développement web et développement de logiciels,<br> nous vous accompagnons dans la mise en œuvre de vos projets
+                    </p>
                 </div>
             </li>
-            <li> 
+            <li>
                 <img src="images/banner02.jpg" alt="">
                 <div class="flex-caption">
                     <h2 style="font-size: 35px; line-height: 40px;">SOLUTION POINTS DE VENTES
@@ -278,11 +277,11 @@ Développement web et développement de logiciels,<br> nous vous accompagnons da
                 <div class="col-md-3 col-sm-6">
                     <div class="service-item">
                         <div class="service-header">
-                        <i class="fad fa-vial"></i>
+                            <i class="fad fa-vial"></i>
                             <h3>TRAVAIL SIMPLIFIÉ</h3>
                         </div>
                         <div class="service-description">
-                        Votre travail devient véritablement collaboratif.<br> La gestion de votre contenu devient efficace grâce à notre CMS
+                            Votre travail devient véritablement collaboratif.<br> La gestion de votre contenu devient efficace grâce à notre CMS
                         </div>
                     </div> <!-- /.service-item -->
                 </div> <!-- /.col-md-3 -->
@@ -304,7 +303,7 @@ Développement web et développement de logiciels,<br> nous vous accompagnons da
                             <h3>PERSONNALISATION</h3>
                         </div>
                         <div class="service-description">
-                        Suivez quotidiennement et en tous lieux votre activité pour ne rien laisser au hasard.
+                            Suivez quotidiennement et en tous lieux votre activité pour ne rien laisser au hasard.
                         </div>
                     </div> <!-- /.service-item -->
                 </div> <!-- /.col-md-3 -->
@@ -315,55 +314,55 @@ Développement web et développement de logiciels,<br> nous vous accompagnons da
                             <h3>MULTI-SUPPORT</h3>
                         </div>
                         <div class="service-description">
-                        S'adapte à tout type de support dans un but accessibilité continue.
+                            S'adapte à tout type de support dans un but accessibilité continue.
                         </div>
                     </div> <!-- /.service-item -->
                 </div> <!-- /.col-md-3 -->
             </div> <!-- /.row -->
         </div> <!-- /.container -->
 
-        <div class="container" >
-     
-            <div class="row"  style="margin-top :80px;  ">
+        <div class="container">
+
+            <div class="row" style="margin-top :80px;  ">
                 <div class="col-md-3 col-sm-6">
                     <div class="service-item">
                         <div class="service-header">
-                        <i class="fab fa-css3-alt"></i>   
+                            <i class="fab fa-css3-alt"></i>
                             <h3>CRÉATION DE SITE WEB</h3>
                         </div>
                         <div class="service-description">
-                        Ellipsis dispose du savoir-faire et de l'expérience indispensables à la conception et à la création de sites web intelligents, répondant à l'ensemble des normes actuelles.                        </div>
+                            Ellipsis dispose du savoir-faire et de l'expérience indispensables à la conception et à la création de sites web intelligents, répondant à l'ensemble des normes actuelles. </div>
                     </div> <!-- /.service-item -->
                 </div> <!-- /.col-md-3 -->
                 <div class="col-md-3 col-sm-6">
                     <div class="service-item">
                         <div class="service-header">
-                        <i class="fad fa-mobile"></i>
-                        
-                        <h3>APPLICATIONS MOBILES</h3>
+                            <i class="fad fa-mobile"></i>
+
+                            <h3>APPLICATIONS MOBILES</h3>
                         </div>
                         <div class="service-description">
-                        L'avenir est mobile! Chaque jour, de nouvelles applications innovantes font leur apparition. Ellipsis vous propose de développer vos applications mobiles sur mesure afin que, vous aussi, vous profitiez de ce marché en pleine expansion.                        </div>
+                            L'avenir est mobile! Chaque jour, de nouvelles applications innovantes font leur apparition. Ellipsis vous propose de développer vos applications mobiles sur mesure afin que, vous aussi, vous profitiez de ce marché en pleine expansion. </div>
                     </div> <!-- /.service-item -->
                 </div> <!-- /.col-md-3 -->
                 <div class="col-md-3 col-sm-6">
                     <div class="service-item">
                         <div class="service-header">
-                        <i class="fad fa-database"></i>       
-                                             <h3>SOLUTIONS ERP</h3>
+                            <i class="fad fa-database"></i>
+                            <h3>SOLUTIONS ERP</h3>
                         </div>
                         <div class="service-description">
-                        Vous désiriez améliorer la gestion de votre entreprise et de ses activités. Nous avons conçu pour vous une solution de gestion qui répond aux besoins spécifiques de tous les départements de votre entreprise conformément à la loi tunisienne.                        </div>
+                            Vous désiriez améliorer la gestion de votre entreprise et de ses activités. Nous avons conçu pour vous une solution de gestion qui répond aux besoins spécifiques de tous les départements de votre entreprise conformément à la loi tunisienne. </div>
                     </div> <!-- /.service-item -->
                 </div> <!-- /.col-md-3 -->
                 <div class="col-md-3 col-sm-6">
                     <div class="service-item">
                         <div class="service-header">
-                        <i class="fad fa-cloud"></i>
+                            <i class="fad fa-cloud"></i>
                             <h3>CLOUD</h3>
                         </div>
                         <div class="service-description">
-                        Le cloud est un modèle qui permet un accès omniprésent, pratique et à la demande à un réseau partagé et à un ensemble de ressources informatiques configurables. Soyez au coeur de l'innovation, nos ingénieurs vous proposent des services cloud à la demandes.                        </div>
+                            Le cloud est un modèle qui permet un accès omniprésent, pratique et à la demande à un réseau partagé et à un ensemble de ressources informatiques configurables. Soyez au coeur de l'innovation, nos ingénieurs vous proposent des services cloud à la demandes. </div>
                     </div> <!-- /.service-item -->
                 </div> <!-- /.col-md-3 -->
             </div> <!-- /.row -->
@@ -476,8 +475,9 @@ Développement web et développement de logiciels,<br> nous vous accompagnons da
             <!-- <div class="title-section text-center">
                 <h2>About Us</h2>
                 <span></span>
-            </div>  --><!-- /.title-section -->
-           <!--  <div class="row">
+            </div>  -->
+            <!-- /.title-section -->
+            <!--  <div class="row">
                 <div class="col-md-9">
 
                     <p class="widget-title" style="font-size: 30px;  line-height: 40px;
@@ -575,36 +575,30 @@ Développement web et développement de logiciels,<br> nous vous accompagnons da
                         <div class="col-md-3 ">
                             <label for="email-id" style="color: white;">Nom et prenom :</label>
 
-                            <input required type="text" autocomplete="on" id="name-id" name="name-id"
-                                class="form-control" placeholder="">
+                            <input required type="text" autocomplete="on" id="name-id" name="name-id" class="form-control" placeholder="">
 
-                            <label style="color: white;" for="subject-id">Telephone :</label>  <span class="error" style="color : white;">*<?php echo $errtel;?></span>
-                            <input required type="tel" autocomplete="on" maxlength=10 id="subject-id" name="tel-id"
-                                class="form-control" placeholder="">
+                            <label style="color: white;" for="subject-id">Telephone :</label> <span class="error" style="color : white;">*<?php echo $errtel; ?></span>
+                            <input required type="tel" autocomplete="on" maxlength=10 id="subject-id" name="tel-id" class="form-control" placeholder="">
 
 
                             <div class=""> <label style="color: white;" for="message">Activité comercial :</label>
-                                <input required id="subject-id" name="service-id"
-                                    placeholder="ex : fastfood , decoration ," class="form-control">
-                                <input class="btn-lg btn-success" style="margin: 20px 0 20px ;  padding-left : 30px;padding-right : 30px; " type="submit" name=""
-                                    value="Valider">
+                                <input required id="subject-id" name="service-id" placeholder="ex : fastfood , decoration ," class="form-control">
+                                <input class="btn-lg btn-success" style="margin: 20px 0 20px ;  padding-left : 30px;padding-right : 30px; " type="submit" name="" value="Valider">
 
-                                    <div class="g-recaptcha" data-sitekey="6Lc1KTIbAAAAAGJtWiZBodd0QD4qZG_RhAOLB-N6"></div>
+                                <div class="g-recaptcha" data-sitekey="6Lc1KTIbAAAAAGJtWiZBodd0QD4qZG_RhAOLB-N6"></div>
 
                             </div>
 
                         </div>
 
                         <div class="col-md-4">
-                            <label style="color: white;" for="email-id">Email:</label><span class="error" style="color : white;">*<?php echo $erremail;?></span>
-                            <input required type="email" autocomplete="on" id="email-id" name="email-id"
-                                class="form-control" placeholder="exemple@exemple.com">
-                                
+                            <label style="color: white;" for="email-id">Email:</label><span class="error" style="color : white;">*<?php echo $erremail; ?></span>
+                            <input required type="email" autocomplete="on" id="email-id" name="email-id" class="form-control" placeholder="exemple@exemple.com">
+
 
 
                             <label style="color: white;" for="subject-id">Adresse :</label>
-                            <input required type="text" autocomplete="on" id="subject-id" name="adresse-id"
-                                class="form-control" placeholder="">
+                            <input required type="text" autocomplete="on" id="subject-id" name="adresse-id" class="form-control" placeholder="">
 
 
                         </div>
@@ -643,25 +637,21 @@ Développement web et développement de logiciels,<br> nous vous accompagnons da
                         <div class="contact-form">
                             <p class="full-row">
 
-                                <input required type="text" id="name-contact-id" name="name-id-contact"
-                                    class="form-control" placeholder="nom et prenom :">
+                                <input required type="text" id="name-contact-id" name="name-id-contact" class="form-control" placeholder="nom et prenom :">
                             </p>
                             <p class="full-row">
 
-                                <input required type="text" id="email-id" name="email-id-contact" class="form-control"
-                                    placeholder="Email :">
-                          
-                                 
-                                </p>
+                                <input required type="text" id="email-id" name="email-id-contact" class="form-control" placeholder="Email :">
+
+
+                            </p>
                             <p class="full-row">
 
-                                <input required type="text" id="subject-id" name="subject-id-contact"
-                                    class="form-control" placeholder="sujet">
+                                <input required type="text" id="subject-id" name="subject-id-contact" class="form-control" placeholder="sujet">
                             </p>
                             <p class="full-row">
                                 <label for="message">Message:</label>
-                                <textarea required name="message-contact" id="message" rows="6" class="form-control"
-                                    placeholder=""></textarea>
+                                <textarea required name="message-contact" id="message" rows="6" class="form-control" placeholder=""></textarea>
                             </p>
                             <input class="mainBtn" type="submit" name="" value="envoyer " class="form-control">
                         </div>
@@ -690,7 +680,7 @@ Développement web et développement de logiciels,<br> nous vous accompagnons da
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-sm-8 col-xs-12">
-                    <p>Copyright &copy; 2022  infodz</p>
+                    <p>Copyright &copy; 2022 infodz</p>
                 </div> <!-- /.col-md-6 -->
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="go-top">
@@ -709,7 +699,6 @@ Développement web et développement de logiciels,<br> nous vous accompagnons da
     <script src="js/jquery.lightbox.js"></script>
     <script src="js/customja.js"></script>
     <script type="text/javascript">
-
         function initialize() {
             var mapOptions = {
                 scrollwheel: false,
