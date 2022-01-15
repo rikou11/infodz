@@ -5,6 +5,7 @@ $pw = '';
 $ndb = 'dbwebapp';
 $con =  mysqli_connect($host, $user, $pw, $ndb);
 
+
 /*   if($con){
 
     echo "connected  ";

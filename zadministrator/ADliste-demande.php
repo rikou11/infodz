@@ -84,7 +84,7 @@ include("php/tableau-liste-demande.php");
               <th scope="col">id</th>
               <th scope="col">date d'inscription</th>
               <th scope="col">Nom & Prenom</th>
-              <th scope="col">tele:</th>
+              <th scope="col">tel:</th>
               <th scope="col">adresse :</th>
               <th scope="col">Email</th>
               <th scope="col">Activite comercial</th>
@@ -102,7 +102,6 @@ include("php/tableau-liste-demande.php");
               <td><?php echo $row["date_demande"] ?></td>
               <td><?php echo $row["fullname"] ?></td>
               <td>0<?php echo $row["tel"] ?></td>
-
               <td><?php echo $row["adresse"] ?></td>
 
               <td><?php echo $row["email"] ?></td>
@@ -125,8 +124,8 @@ include("php/tableau-liste-demande.php");
 
 
 
-                <a href="ADliste-demande.php?block=<?php echo $row["id"]; ?>&fullname=<?php echo $row["fullname"]; ?>&tel <?php echo $row["tel"]; ?>
-&email= <?php echo $row["email"]; ?>&service_comercial= <?php echo $row["service_comercial"]; ?>&adresse=<?php echo $row["adresse"] ?>" class="btn btn-danger btn-sm" onclick="clic()">bloque</a>
+                <a href="ADliste-demande.php?block=<?php echo $row["id"]; ?>&fullname=<?php echo $row["fullname"]; ?>&tel=<?php echo $row["tel"]; ?>
+&email= <?php echo $row["email"]; ?>&service_comercial=<?php echo $row["service_comercial"]; ?>&adresse=<?php echo $row["adresse"] ?>" class="btn btn-danger btn-sm" onclick="clic()">bloque</a>
 
 
 
