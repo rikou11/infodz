@@ -119,11 +119,76 @@ include("php/validation-admin.php");
 
               <?php
               if ($Clickbtnaction == 1) {
+
+
+                echo '
+                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#' . $row["id"] . 'supp">
+                  <i class="fas fa-trash-alt"></i>
+                  </button>
+                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#' . $row["id"] . 'bloque">
+                          bloque    
+                  </button>
+
+
+<div class="modal fade" id="' . $row["id"] . 'bloque" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+     vous etes sur valider ' . $row["fullname"] . ' ?
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+   <a href="dashboard-validation-admin.php?block=' . $row["id"] . '&fullname=' . $row["fullname"] .
+                  '&tel=' . $row["tel"] .
+                  '&email=' . $row["email"] . '&service_comercial=' . $row["service_comercial"] . '&adresse=' . $row["adresse"] . ' " class="btn btn-danger btn"  >bloque</a>
+               
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="' . $row["id"] . 'supp" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+     vous etes sur valider Mr' . $row["fullname"] . ' ?
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+ <a href="dashboard-validation-admin.php?delete=' . $row["id"] . ' "class="btn btn-primary btn" "> supprimer client</a>
+ 
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+';
+
+
+
+
+
+                /*   
                 echo '<a href="dashboard-validation-admin.php?delete=' . $row["id"] . '"  class="btn btn-danger btn-sm mx-2"     onclick="clic()"><i class="fas fa-trash-alt"></i></a>';
 
                 echo '<a href="dashboard-validation-admin.php?block=' . $row["id"] . '&fullname=' . $row["fullname"] .
                   '&tel=' . $row["tel"] .
-                  '&email=' . $row["email"] . '&service_comercial=' . $row["service_comercial"] . '&adresse=' . $row["adresse"] . ' " class="btn btn-danger btn-sm"   onclick="clic()">bloque</a>';
+                  '&email=' . $row["email"] . '&service_comercial=' . $row["service_comercial"] . '&adresse=' . $row["adresse"] . ' " class="btn btn-danger btn-sm"   >bloque</a>';
+       */
               } else {
 
                 echo '<a href="#"  class="btn btn-secondary btn-sm"  ><i class="fas fa-trash-alt"></i></a>';

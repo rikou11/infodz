@@ -56,6 +56,6 @@ if (isset($_GET["block"]) || isset($_GET["tel"]) || isset($_GET["email"]) || iss
 
   if (mysqli_query($con, $query)) {
     echo " insert data seccesfuly";
-    header("location:ADliste-demande.php");
+    header("location:ADliste-demande");
   }
 }

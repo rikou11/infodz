@@ -84,7 +84,7 @@ include("php/tableau-demande-admin.php");
     <h2 style="margin-top: 50px; color : blue;"><i class="fas fa-list"></i> les demandes d'inscription</h1>
 
       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-        <table class="table table-striped table-hover" id="myTable" data-order='[[ 1, "asc" ]]' data-page-length='25'>
+        <table class="table table-striped table-hover" id="myTable" data-order='[[ 1, "desc" ]]' data-page-length='25'>
           <thead>
 
             <tr>
@@ -121,20 +121,102 @@ include("php/tableau-demande-admin.php");
                 <?php
 
                 if ($Clickbtn == 1) {
-                  echo       '<a href="dashboard-admin.php?valider=' . $row["id"] . ' "class="btn btn-success btn-sm" onclick="clic()">  valider</a> ';
+
+
+
+
+                  echo '<button type="button" class="btn btn-success" data-toggle="modal" data-target="#' . $row["id"] . '">
+               <i class="fas fa-check" ></i>  
+</button>
+<div class="modal fade" id="' . $row["id"] . '" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+     vous etes sur valider Mr' . $row["fullname"] . ' ?
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  <a href="dashboard-admin.php?valider=' . $row["id"] . ' "class="btn btn-primary btn" ">  valider</a>
+ 
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+';
                 } else {
-                  echo   '<a  href="#"  class="btn btn-secondary btn-sm" > valider</a>  ';
+                  echo   '<a  href="#"  class="btn btn-secondary btn-sm" >    <i class="fas fa-check" ></i> </a>  ';
                 }    ?>
 
               </td>
               <td class="col-md-5 ">
                 <?php
                 if ($Clickbtnaction == 1) {
-                  echo '<a href="dashboard-admin.php?delete=' . $row["id"] . '"  class="btn btn-danger btn-sm mx-2"     onclick="clic()"><i class="fas fa-trash-alt"></i></a>';
 
-                  echo '<a href="dashboard-admin.php?block=' . $row["id"] . '&fullname=' . $row["fullname"] .
+
+                  echo '
+                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#' . $row["id"] . 'supp">
+                  <i class="fas fa-trash-alt"></i>
+                  </button>
+                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#' . $row["id"] . 'bloque">
+                          bloque    
+                  </button>
+
+
+<div class="modal fade" id="' . $row["id"] . 'bloque" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+     vous etes sur valider ' . $row["fullname"] . ' ?
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+   <a href="dashboard-admin.php?block=' . $row["id"] . '&fullname=' . $row["fullname"] .
                     '&tel=' . $row["tel"] .
-                    '&email=' . $row["email"] . '&service_comercial=' . $row["service_comercial"] . '&adresse=' . $row["adresse"] . ' " class="btn btn-danger btn-sm"   onclick="clic()">bloque</a>';
+                    '&email=' . $row["email"] . '&service_comercial=' . $row["service_comercial"] . '&adresse=' . $row["adresse"] . ' " class="btn btn-danger btn"  >bloque</a>
+               
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="' . $row["id"] . 'supp" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+     vous etes sur valider Mr' . $row["fullname"] . ' ?
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+ <a href="dashboard-admin.php?delete=' . $row["id"] . ' "class="btn btn-primary btn" "> supprimer client</a>
+ 
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+';
                 } else {
 
                   echo '<a href="#"  class="btn btn-secondary btn-sm"  ><i class="fas fa-trash-alt"></i></a>';
@@ -164,12 +246,7 @@ include("php/tableau-demande-admin.php");
       $('#myTable').DataTable();
     });
   </script>
-  <script>
-    function clic() {
-      return confirm('vous etes sur   ?')
 
-    }
-  </script>
 </body>
 
 </html>
