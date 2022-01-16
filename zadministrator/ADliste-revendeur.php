@@ -73,7 +73,7 @@ include("php/tableau-revendeur.php");
     <h2 style="margin-top: 50px; color : blue;"><i class="fas fa-list"></i> Liste revendeur</h1>
 
       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-        <table class="table table-striped table-hover" id="myTable" data-order='[[ 1, "asc" ]]' data-page-length='25'>
+        <table class="table table-striped table-hover" id="myTable" data-order='[[ 1, "desc" ]]' data-page-length='25'>
           <thead>
 
             <tr>
@@ -172,11 +172,11 @@ include("php/tableau-revendeur.php");
           </button>
         </div>
         <div class="modal-body">
-         vous etes sur valider Mr' . $row["fullname"] . ' ?
+         vous etes sur sepprimer ' . $row["fullname"] . ' ?
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-     <a href="ADliste-revendeur.php?delete=' . $row["id"] . ' "class="btn btn-primary btn" "> supprimer client</a>
+     <a href="ADliste-revendeur.php?delete=' . $row["id"] . ' "class="btn btn-danger btn" "> supprimer client</a>
      
         </div>
       </div>
@@ -203,8 +203,12 @@ include("php/tableau-revendeur.php");
 
   <script>
     $(document).ready(function() {
-      $('#myTable').DataTable();
-    });
+        $('#myTable').DataTable();
+      }
+
+    )
+
+    ;
   </script>
 
 </body>

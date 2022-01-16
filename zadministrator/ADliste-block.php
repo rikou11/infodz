@@ -107,7 +107,7 @@ include("php/tableau-block.php");
             <td><?php echo $row["service_comercial"] ?></td>
             <td><?php echo $row["blocker_par"] ?></td>
             <td>
-              <a href="ADliste-block.php?deblocker=<?php echo $row["id"];  ?>" class="btn btn-danger btn-sm " onclick="return confirm('Are you sure you want to block user ?')">debloquer</i></a>
+              <a href="ADliste-block.php?deblocker=<?php echo $row["id"];  ?>" class="btn btn-danger btn-sm " onclick="return confirm('Are you sure you want to debloquer  ?')">debloquer</i></a>
             </td>
           </tr>
 
