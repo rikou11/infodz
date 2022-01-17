@@ -121,10 +121,10 @@ include("php/tableau-revendeur.php");
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
 
-                    <a href="ADliste-revendeur.php?autoriser=<?php echo $row["id"]; ?>" class="dropdown-item" onclick="clic()"> On</a>
+                    <a href="ADliste-revendeur.php?autoriser=<?php echo $row["id"]; ?>" class="dropdown-item"> On</a>
 
 
-                    <a href="ADliste-revendeur.php?deautoriser=<?php echo $row["id"]; ?>" class="dropdown-item" onclick="clic()"> Off</a>
+                    <a href="ADliste-revendeur.php?deautoriser=<?php echo $row["id"]; ?>" class="dropdown-item"> Off</a>
                   </div>
                 </div>
 
@@ -145,18 +145,58 @@ include("php/tableau-revendeur.php");
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
 
-                    <a href="ADliste-revendeur.php?valider=<?php echo $row["id"]; ?>" onclick="clic()" class="dropdown-item"> On</a>
+                    <a href="ADliste-revendeur.php?valider=<?php echo $row["id"]; ?>" class="dropdown-item"> On</a>
 
 
-                    <a href="ADliste-revendeur.php?devalider=<?php echo $row["id"]; ?>" onclick="clic()" class="dropdown-item"> off </a>
+                    <a href="ADliste-revendeur.php?devalider=<?php echo $row["id"]; ?>" class="dropdown-item"> Off </a>
                   </div>
                 </div>
 
               </td>
               <td>
+                <?php
+
+                echo '
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#' . $row["id"] . 'supp">
+    <i class="fas fa-trash-alt"></i>
+    </button>
 
 
-                <a href="ADliste-revendeur.php?delete=<?php echo $row["id"]; ?>" class="btn btn-danger btn-sm" onclick="clic()"><i class="fas fa-trash-alt"></i></a>
+
+    <div class="modal fade" id="' . $row["id"] . 'supp" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         vous etes sur valider Mr' . $row["fullname"] . ' ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <a href="ADliste-revendeur.php?delete=' . $row["id"] . ' " class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
+ 
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    
+    ';
+
+                ?>
+
+
+
+
+
+
+
+
+
               </td>
             </tr>
           <?php endwhile; ?>
@@ -176,12 +216,7 @@ include("php/tableau-revendeur.php");
       $('#myTable').DataTable();
     });
   </script>
-  <script>
-    function clic() {
-      return confirm('Are you sure you want to valid user ?')
 
-    }
-  </script>
 </body>
 
 </html>

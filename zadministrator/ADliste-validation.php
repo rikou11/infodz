@@ -113,7 +113,7 @@ include("php/tableau-validation.php");
             <td><?php echo $row["valider_par"] ?></td>
 
 
-            <td class="col-md-5 ">
+            <td class="col-md-5">
               <?php
 
               echo '
