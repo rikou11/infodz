@@ -27,9 +27,14 @@ include("php/tableau-validation.php");
   <link rel="stylesheet" href="../css/dashboardadmin.css">
 
   <!-- jquerry -->
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+  <!--   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
 
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+ -->
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css" />
+
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.js"></script>
 
   <title>Admin Dashboard</title>
 </head>
@@ -91,7 +96,7 @@ include("php/tableau-validation.php");
             <th scope="col">Email</th>
             <th scope="col">Activite comercial</th>
             <th scope="col">Validation par</th>
-            <th scope="col">action</th>
+            <th scope="col" class="col-2">action</th>
           </tr>
         </thead>
 

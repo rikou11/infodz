@@ -107,7 +107,40 @@ include("php/tableau-block.php");
             <td><?php echo $row["service_comercial"] ?></td>
             <td><?php echo $row["blocker_par"] ?></td>
             <td>
-              <a href="ADliste-block.php?deblocker=<?php echo $row["id"];  ?>" class="btn btn-danger btn-sm " onclick="return confirm('Are you sure you want to debloquer  ?')">debloquer</i></a>
+
+
+              <?php
+
+              echo '
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#' . $row["id"] . 'supp">
+deboquer
+</button>
+<div class="modal fade" id="' . $row["id"] . 'supp" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body">
+vous etes sur sepprimer ' . $row["fullname"] . ' ?
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+<a href="ADliste-block.php?deblocker=' . $row["id"] . ' " class="btn btn-danger btn-sm " >debloquer</i></a>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+';
+
+              ?>
+
             </td>
           </tr>
 

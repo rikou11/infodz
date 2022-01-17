@@ -145,10 +145,10 @@ include("php/tableau-revendeur.php");
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
 
-                    <a href="ADliste-revendeur.php?valider=<?php echo $row["id"]; ?>" onclick="clic()" class="dropdown-item"> On</a>
+                    <a href="ADliste-revendeur.php?valider=<?php echo $row["id"]; ?>" class="dropdown-item"> On</a>
 
 
-                    <a href="ADliste-revendeur.php?devalider=<?php echo $row["id"]; ?>" onclick="clic()" class="dropdown-item"> off </a>
+                    <a href="ADliste-revendeur.php?devalider=<?php echo $row["id"]; ?>" class="dropdown-item"> Off </a>
                   </div>
                 </div>
 
