@@ -83,7 +83,7 @@ include("php/tableau-block.php");
             <th scope="col">Nom & Prenom</th>
             <th scope="col">tele:</th>
             <th scope="col">adresse:</th>
-
+            <!-- dlkz -->
             <th scope="col">Email</th>
             <th scope="col">Activité comercial</th>
             <th scope="col">blocker par</th>
@@ -94,7 +94,7 @@ include("php/tableau-block.php");
         <?php
         while ($row = $ResultQuerySelectAll->fetch_assoc()) :
         ?>
-
+          <!-- row -->
           <tr>
             <td>#<?php echo $row["id"] ?></td>
             <td><?php echo $row["date_block"] ?></td>
@@ -119,7 +119,8 @@ include("php/tableau-block.php");
 
 
 
-
+  <!-- vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv -->
+  <!-- fezfezefzzzzzzzzzzzzzzzzzzzzzz -->
   <!-- fin table des demandes de Telechargement -->
   <script>
     $(document).ready(function() {
