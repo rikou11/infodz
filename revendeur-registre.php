@@ -125,7 +125,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <!-- Sign up form -->
   <section class="signup">
-    <div class="container">
+    <div class="container"><a href="index.php"><i style=" color:black;  font-size: 50px;
+" class=" fas fa-home"></i></a>
       <div class="signup-content">
         <div class="signup-form">
           <h2 class="form-title">espace comercial</h2>

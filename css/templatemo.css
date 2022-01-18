@@ -231,9 +231,8 @@ h6 {
   -o-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
-.main-header .logo {
+/* .main-header .logo {
   /*   margin-top: 10px; */
-}
 .main-header .logo h1 {
   font-size: 28px;
   font-weight: 700;
@@ -487,7 +486,8 @@ h6 {
 }
 #about .our-team .team-member .member-img .overlay .social li {
   display: inline-block;
-  float: left;
+  /*   float: left;
+ */
   margin-right: 1px;
 }
 #about .our-team .team-member .member-img .overlay .social li a {
@@ -726,3 +726,6 @@ IPHONE 4-4S-5 PORTRAIT (320x568)
 /*------------------------------------------------------
 	telechargemenet Styles 
 --------------------------------------------------------*/
+
+.picc {
+}

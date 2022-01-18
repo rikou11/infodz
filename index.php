@@ -137,6 +137,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ::-webkit-scrollbar-thumb:hover {
             background: #555;
         }
+
+        /* Style the header: fixed position (always stay at the top) */
+        .header {
+            position: fixed;
+            top: 0;
+            z-index: 1;
+            width: 100%;
+            background-color: #f1f1f1;
+        }
+
+        /* The progress container (grey background) */
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: #ccc;
+        }
+
+        /* The progress bar (scroll indicator) */
+        .progress-bar {
+            height: 8px;
+            background: #dc3045;
+            width: 0%;
+        }
     </style>
     <!-- JavaScripts -->
     <script src="js/jquery-1.10.2.min.js"></script>
@@ -220,7 +243,9 @@ congratulations
                                 </ul>
                             </div> <!-- /.menu -->
                         </div> <!-- /.col-md-8 -->
+
                     </div> <!-- /.row -->
+
                     <div class="responsive-menu text-right visible-xs visible-sm">
                         <a href="#" class="toggle-menu fa fa-bars"></a>
                         <div class="menu">
@@ -237,6 +262,13 @@ congratulations
                         </div> <!-- /.menu -->
                     </div> <!-- /.responsive-menu -->
                 </div> <!-- /.container -->
+                <div class="header">
+
+                    <div class="progress-container">
+                        <div class="progress-bar" id="myBar"></div>
+                    </div>
+                </div>
+
             </div> <!-- /.header -->
         </div> <!-- /.site-header -->
     </div> <!-- /#home -->
@@ -270,7 +302,7 @@ congratulations
     <div id="services" class="section-cotent">
         <div class="container">
             <div class="title-section text-center">
-                <h2>Our Services</h2>
+                <h2>Notre Services</h2>
                 <span></span>
             </div> <!-- /.title-section -->
             <div class="row">
@@ -372,7 +404,7 @@ congratulations
     <div id="portfolio" class="section-content">
         <div class="container">
             <div class="title-section text-center">
-                <h2>Our Portfolio</h2>
+                <h2>Notre Portfolio</h2>
                 <span></span>
             </div> <!-- /.title-section -->
             <div class="row">
@@ -403,7 +435,7 @@ congratulations
                         <img src="images/portfolio/item3.jpg" alt="Portfolio Item 3">
                         <div class="overlay">
                             <div class="inner">
-                                <h4><a data-rel="lightbox" href="images/portfolio/item3.jpg">Etiam magna</a></h4>
+                                <h4><a data-rel="lightbox" style="padding-top: 100%;text-align: center;" href="images/portfolio/item3.jpg">Etiam magna</a></h4>
                                 <span>Design</span>
                             </div>
                         </div> <!-- /.overlay -->
@@ -414,7 +446,7 @@ congratulations
                         <img src="images/portfolio/item4.jpg" alt="Portfolio Item 4">
                         <div class="overlay">
                             <div class="inner">
-                                <h4><a data-rel="lightbox" href="images/portfolio/item4.jpg">Vivamus dignissim</a></h4>
+                                <h4><a data-rel="lightbox" style="padding-top: 100%;text-align: center;" href="images/portfolio/item4.jpg">Vivamus dignissim</a></h4>
                                 <span>Creative</span>
                             </div>
                         </div> <!-- /.overlay -->
@@ -427,7 +459,7 @@ congratulations
                         <img src="images/portfolio/item5.jpg" alt="Portfolio Item 5">
                         <div class="overlay">
                             <div class="inner">
-                                <h4><a data-rel="lightbox" href="images/portfolio/item5.jpg">Fusce semper</a></h4>
+                                <h4><a data-rel="lightbox" style="padding-top: 100%;text-align: center;" href="images/portfolio/item5.jpg">Fusce semper</a></h4>
                                 <span>HTML CSS</span>
                             </div>
                         </div> <!-- /.overlay -->
@@ -438,7 +470,7 @@ congratulations
                         <img src="images/portfolio/item6.jpg" alt="Portfolio Item 6">
                         <div class="overlay">
                             <div class="inner">
-                                <h4><a data-rel="lightbox" href="images/portfolio/item6.jpg">Nunc ultrices</a></h4>
+                                <h4><a data-rel="lightbox" style="padding-top: 100%;text-align: center;" href="images/portfolio/item6.jpg">Nunc ultrices</a></h4>
                                 <span>Mobile</span>
                             </div>
                         </div> <!-- /.overlay -->
@@ -449,7 +481,7 @@ congratulations
                         <img src="images/portfolio/item7.jpg" alt="Portfolio Item 7">
                         <div class="overlay">
                             <div class="inner">
-                                <h4><a data-rel="lightbox" href="images/portfolio/item7.jpg">Fusce vehicula</a></h4>
+                                <h4><a data-rel="lightbox" style="padding-top: 100%;text-align: center;" href="images/portfolio/item7.jpg">Fusce vehicula</a></h4>
                                 <span>HTML CSS</span>
                             </div>
                         </div> <!-- /.overlay -->
@@ -460,7 +492,7 @@ congratulations
                         <img src="images/portfolio/item8.jpg" alt="Portfolio Item 8">
                         <div class="overlay">
                             <div class="inner">
-                                <h4><a data-rel="lightbox" href="images/portfolio/item8.jpg">Vivamus elementum</a></h4>
+                                <h4><a data-rel="lightbox" style="padding-top: 100%;text-align: center;" href="images/portfolio/item8.jpg">Vivamus elementum</a></h4>
                                 <span>Mobile</span>
                             </div>
                         </div> <!-- /.overlay -->
@@ -499,13 +531,7 @@ congratulations
                         <div class="team-member">
                             <div class="member-img">
                                 <img src="images/team/member-1.jpg" alt="Tracy">
-                                <div class="overlay">
-                                    <ul class="social">
-                                        <li><a href="#" class="fa fa-facebook"></a></li>
-                                        <li><a href="#" class="fa fa-twitter"></a></li>
-                                        <li><a href="#" class="fa fa-instagram"></a></li>
-                                    </ul>
-                                </div> <!-- /.overlay -->
+                                <!-- /.overlay -->
                             </div>
                             <div class="inner-content">
                                 <h5>Tracy One</h5>
@@ -518,13 +544,7 @@ congratulations
                         <div class="team-member">
                             <div class="member-img">
                                 <img src="images/team/member-2.jpg" alt="Mary">
-                                <div class="overlay">
-                                    <ul class="social">
-                                        <li><a href="#" class="fa fa-facebook"></a></li>
-                                        <li><a href="#" class="fa fa-twitter"></a></li>
-                                        <li><a href="#" class="fa fa-instagram"></a></li>
-                                    </ul>
-                                </div> <!-- /.overlay -->
+
                             </div>
                             <div class="inner-content">
                                 <h5>Mary Two</h5>
@@ -537,13 +557,7 @@ congratulations
                         <div class="team-member">
                             <div class="member-img">
                                 <img src="images/team/member-3.jpg" alt="Julia">
-                                <div class="overlay">
-                                    <ul class="social">
-                                        <li><a href="#" class="fa fa-facebook"></a></li>
-                                        <li><a href="#" class="fa fa-twitter"></a></li>
-                                        <li><a href="#" class="fa fa-instagram"></a></li>
-                                    </ul>
-                                </div> <!-- /.overlay -->
+                                <!-- /.overlay -->
                             </div>
                             <div class="inner-content">
                                 <h5>Julia Three</h5>
@@ -561,16 +575,23 @@ congratulations
     <!-- /.title-section -->
 
 
-    <div class="telechargemenet" style="height: 700px;  background-color: #dc3045;">
+    <div class="telechargemenet" style="height: 700px;  background-image: url(picc2.svg);   background-repeat: no-repeat;
+  
+  background-position: 950px 250px ;
+  background-size : 30%;
+  background-color:#dc3045;
+  ">
         <form class="container" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data" method="POST" autocomplete="on">
             <div>
                 <div class="title-section text-center">
                     <h2 style="color: white;" id="telechargement">Telechargement</h2>
-                    <span style="color: white;"></span>
+                    <span style="color: #fff;"></span>
                 </div> <!-- /.title-section -->
                 <h4 class="widget-title" style="color: white;">Pour avoir une version gratuite remplire se formulaire
                 </h4>
-                <div class="container">
+
+                <div class="">
+
                     <div class="row">
                         <div class="col-md-3 ">
                             <label for="email-id" style="color: white;">Nom et prenom :</label>
@@ -593,6 +614,7 @@ congratulations
 
                         <div class="col-md-4">
                             <label style="color: white;" for="email-id">Email:</label><span class="error" style="color : white;">*<?php echo $erremail; ?></span>
+
                             <input required type="email" autocomplete="on" id="email-id" name="email-id" class="form-control" placeholder="exemple@exemple.com">
 
 
@@ -602,7 +624,7 @@ congratulations
 
 
                         </div>
-                        <div class="col-md-4">
+                        <!--    <div class="col-md-4">
 
 
 
@@ -611,8 +633,10 @@ congratulations
 
 
 
-                        </div>
+                        </div> -->
                     </div>
+
+
                 </div>
 
                 <!-- /.col-md-3 -->
@@ -657,8 +681,8 @@ congratulations
                         </div>
                     </div> <!-- /.col-md-3 -->
                     <div class="col-md-5 col-sm-6">
-                        <h4 class="widget-title">Our location</h4>
-                        <div class="map-holder">
+                        <h4 class="widget-title">Notre localisation</h4>
+                        <!--    <div class="map-holder">
                             <div class="google-map-canvas" id="map-canvas" style="height: 250px;">
                             </div>
                         </div> <!-- /.map-holder -->
@@ -719,6 +743,19 @@ congratulations
         }
 
         window.onload = loadScript;
+    </script>
+    <script>
+        // When the user scrolls the page, execute myFunction
+        window.onscroll = function() {
+            myFunction()
+        };
+
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
     </script>
 
 </body>
