@@ -49,6 +49,11 @@ jQuery(document).ready(function ($) {
     return false;
   });
 
+  // Page loading animation
+  $(window).on("load", function () {
+    $("#js-preloader").addClass("loaded");
+  });
+
   /************** Responsive Navigation *********************/
   $(".toggle-menu").click(function () {
     $(".menu").stop(true, true).toggle();

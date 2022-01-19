@@ -117,50 +117,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-    <style>
-        /* width */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
 
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
 
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: #dc3045;
-        }
 
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-
-        /* Style the header: fixed position (always stay at the top) */
-        .header {
-            position: fixed;
-            top: 0;
-            z-index: 1;
-            width: 100%;
-            background-color: #f1f1f1;
-        }
-
-        /* The progress container (grey background) */
-        .progress-container {
-            width: 100%;
-            height: 8px;
-            background: #ccc;
-        }
-
-        /* The progress bar (scroll indicator) */
-        .progress-bar {
-            height: 8px;
-            background: #dc3045;
-            width: 0%;
-        }
-    </style>
     <!-- JavaScripts -->
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/modernizr.js"></script>
@@ -199,6 +158,22 @@ congratulations
 
 
     ?>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+
+
     <div id="home">
         <div class="site-header">
             <div class="top-header">
@@ -413,8 +388,8 @@ congratulations
                         <img src="images/portfolio/item1.jpg" alt="Portfolio Item 1">
                         <div class="overlay">
                             <div class="inner">
-                                <h4><a data-rel="lightbox" href="images/portfolio/item1.jpg">Nulla non enim</a></h4>
-                                <span>Design</span>
+                                <h4><a data-rel="lightbox" style="padding: 100%;  color:#dc304400" href="images/portfolio/item1.jpg">Nulla non enim </a></h4>
+
                             </div>
                         </div> <!-- /.overlay -->
                     </div> <!-- /.portfolio-thumb -->
@@ -424,8 +399,8 @@ congratulations
                         <img src="images/portfolio/item2.jpg" alt="Portfolio Item 2">
                         <div class="overlay">
                             <div class="inner">
-                                <h4><a data-rel="lightbox" href="images/portfolio/item2.jpg">Duis nec urna</a></h4>
-                                <span>Creative</span>
+                                <h4><a data-rel="lightbox" style="padding: 100%;text-align: center;  color:#dc304400" href="images/portfolio/item2.jpg">Duis nec urna</a></h4>
+
                             </div>
                         </div> <!-- /.overlay -->
                     </div> <!-- /.portfolio-thumb -->
@@ -435,8 +410,8 @@ congratulations
                         <img src="images/portfolio/item3.jpg" alt="Portfolio Item 3">
                         <div class="overlay">
                             <div class="inner">
-                                <h4><a data-rel="lightbox" style="padding-top: 100%;text-align: center;" href="images/portfolio/item3.jpg">Etiam magna</a></h4>
-                                <span>Design</span>
+                                <h4><a data-rel="lightbox" style="padding: 100%;text-align: center;  color:#dc304400" href="images/portfolio/item3.jpg">Etiam magna</a></h4>
+
                             </div>
                         </div> <!-- /.overlay -->
                     </div> <!-- /.portfolio-thumb -->
@@ -446,8 +421,8 @@ congratulations
                         <img src="images/portfolio/item4.jpg" alt="Portfolio Item 4">
                         <div class="overlay">
                             <div class="inner">
-                                <h4><a data-rel="lightbox" style="padding-top: 100%;text-align: center;" href="images/portfolio/item4.jpg">Vivamus dignissim</a></h4>
-                                <span>Creative</span>
+                                <h4><a data-rel="lightbox" style="padding: 100%;text-align: center;  color:#dc304400" href="images/portfolio/item4.jpg">Vivamus dignissim</a></h4>
+
                             </div>
                         </div> <!-- /.overlay -->
                     </div> <!-- /.portfolio-thumb -->
@@ -459,8 +434,8 @@ congratulations
                         <img src="images/portfolio/item5.jpg" alt="Portfolio Item 5">
                         <div class="overlay">
                             <div class="inner">
-                                <h4><a data-rel="lightbox" style="padding-top: 100%;text-align: center;" href="images/portfolio/item5.jpg">Fusce semper</a></h4>
-                                <span>HTML CSS</span>
+                                <h4><a data-rel="lightbox" style="padding: 100%;text-align: center;  color:#dc304400" href="images/portfolio/item5.jpg">Fusce semper</a></h4>
+
                             </div>
                         </div> <!-- /.overlay -->
                     </div> <!-- /.portfolio-thumb -->
@@ -470,8 +445,8 @@ congratulations
                         <img src="images/portfolio/item6.jpg" alt="Portfolio Item 6">
                         <div class="overlay">
                             <div class="inner">
-                                <h4><a data-rel="lightbox" style="padding-top: 100%;text-align: center;" href="images/portfolio/item6.jpg">Nunc ultrices</a></h4>
-                                <span>Mobile</span>
+                                <h4><a data-rel="lightbox" style="padding: 100%;text-align: center;  color:#dc304400" href="images/portfolio/item6.jpg">Nunc ultrices</a></h4>
+
                             </div>
                         </div> <!-- /.overlay -->
                     </div> <!-- /.portfolio-thumb -->
@@ -481,8 +456,8 @@ congratulations
                         <img src="images/portfolio/item7.jpg" alt="Portfolio Item 7">
                         <div class="overlay">
                             <div class="inner">
-                                <h4><a data-rel="lightbox" style="padding-top: 100%;text-align: center;" href="images/portfolio/item7.jpg">Fusce vehicula</a></h4>
-                                <span>HTML CSS</span>
+                                <h4><a data-rel="lightbox" style="padding: 100%;text-align: center;  color:#dc304400" href="images/portfolio/item7.jpg">Fusce vehicula</a></h4>
+
                             </div>
                         </div> <!-- /.overlay -->
                     </div> <!-- /.portfolio-thumb -->
@@ -492,8 +467,8 @@ congratulations
                         <img src="images/portfolio/item8.jpg" alt="Portfolio Item 8">
                         <div class="overlay">
                             <div class="inner">
-                                <h4><a data-rel="lightbox" style="padding-top: 100%;text-align: center;" href="images/portfolio/item8.jpg">Vivamus elementum</a></h4>
-                                <span>Mobile</span>
+                                <h4><a data-rel="lightbox" style="padding: 100%;text-align: center;  color:#dc304400" href="images/portfolio/item8.jpg">Vivamus elementum</a></h4>
+                                <!-- <span>Mobile</span> -->
                             </div>
                         </div> <!-- /.overlay -->
                     </div> <!-- /.portfolio-thumb -->

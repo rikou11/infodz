@@ -185,7 +185,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           </form>
         </div>
         <div class="signup-image hidden-xs">
-          <figure><img src="imgs/undraw_next_tasks_re_5eyy.svg" alt="sing up image"></figure>
+          <figure><img src="signup.svg" alt="sing up image"></figure>
 
         </div>
       </div>

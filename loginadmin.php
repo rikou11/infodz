@@ -36,7 +36,7 @@ include("loginValidation.php");
 " class=" fas fa-home"></i></a>
                 <div class="signin-content">
                     <div class="signin-form" style="display:flex; margin-top:50px">
-                        <figure><img src="imgs/undraw_authentication_fsn5.svg" alt="sing up image"></figure>
+                        <figure><img src="login.svg" alt="sing up image"></figure>
 
                     </div>
 
