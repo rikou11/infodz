@@ -110,7 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     <!-- Favicons -->
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="shortcut icon" href="Asset 1.svg">
     <!-- scroll barstyle  -->
     <!-- recaptcha -->
 
@@ -252,7 +252,7 @@ congratulations
     <div class="flexslider">
         <ul class="slides">
             <li>
-                <img src="images/banner01.jpg" alt="">
+                <img src="1179074.jpg" alt="">
                 <div class="flex-caption">
                     <h2 style="font-size: 35px; line-height: 40px;">SOLUTION POINTS DE VENTES<br> MATÉRIEL ET LOGICIEL
                         POINT DE VENTE</h2>
@@ -263,7 +263,7 @@ congratulations
                 </div>
             </li>
             <li>
-                <img src="images/banner02.jpg" alt="">
+                <img src="1179074.jpg" alt="">
                 <div class="flex-caption">
                     <h2 style="font-size: 35px; line-height: 40px;">SOLUTION POINTS DE VENTES
                         <br> MATÉRIEL ET LOGICIEL POINT DE VENTE
