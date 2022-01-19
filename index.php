@@ -159,22 +159,23 @@ congratulations
 
     ?>
 
-    <!-- ***** Preloader Start ***** -->
-    <div id="js-preloader" class="js-preloader">
-        <div class="preloader-inner">
-            <span class="dot"></span>
-            <div class="dots">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </div>
-    <!-- ***** Preloader End ***** -->
 
 
 
     <div id="home">
+        <!-- ***** Preloader Start ***** -->
+        <div id="js-preloader" class="js-preloader">
+            <div class="preloader-inner">
+                <span class="dot"></span>
+                <div class="dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <!-- ***** Preloader End ***** -->
+
         <div class="site-header">
             <div class="top-header">
                 <div class="container">
@@ -200,11 +201,11 @@ congratulations
             <div class="main-header">
                 <div class="container">
                     <div class="row">
-                        <div class="">
+                        <!--      <div class="">
                             <div class="logo">
-                                <h1><a href="#" title="Dreri"><i class="fad fa-user"></i></a></h1>
-                            </div> <!-- /.logo -->
-                        </div> <!-- /.col-md-4 -->
+                                <h1> </h1>
+                            </div>
+                        </div> -->
                         <div class=" ">
                             <div class="menu text-right hidden-sm hidden-xs">
                                 <ul>
@@ -222,7 +223,7 @@ congratulations
                     </div> <!-- /.row -->
 
                     <div class="responsive-menu text-right visible-xs visible-sm">
-                        <a href="#" class="toggle-menu fa fa-bars"></a>
+                        <a href="#" class="toggle-menu fa fa-bars " style="padding-top: 15px ;"></a>
                         <div class="menu">
                             <ul>
                                 <li><a href="#home">Accueil</a></li>
