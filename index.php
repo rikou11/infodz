@@ -106,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/templatemo.css">
     <link rel="stylesheet" href="css/templatemo-misc.css">
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/animat.css">
 
 
     <!-- Favicons -->
@@ -304,7 +304,7 @@ congratulations
                         </div>
                     </div> <!-- /.service-item -->
                 </div> <!-- /.col-md-3 -->
-                <div class="col-md-3 col-sm-6">
+                <div class="col-md-3 col-sm-6 ">
                     <div class="service-item">
                         <div class="service-header">
                             <i class="fad fa-cogs"></i>
