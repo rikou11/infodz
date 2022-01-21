@@ -1,81 +1,5 @@
 <?php
-include("connection.php");
-$name = $email = $phone = $adresse = $service =    "";
-
-$errname = $erremail = $errtel = $erradresse = $errservice =    "";
-$err_warningtel = 0;
-
-$err_warningemail = 0;
-
-$err_success = 0;
-$t = 1;
-$f = 0;
-
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //variables
-    $name = test_input($_POST["name-id"]);
-    $email = test_input($_POST["email-id"]);
-    $adresse = test_input($_POST["adresse-id"]);
-    $phone = test_input($_POST["tel-id"]);
-    $service = test_input($_POST["service-id"]);
-}
-
-function test_input($data)
-{
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-
-
-    //!!!!!!!phone validation IMPORTANT !!!!!!
-    if (empty($_POST["tel-id"])) {
-        $errtel = "tel is required";
-    } else {
-
-        $select = mysqli_query($con, "SELECT id FROM block_liste WHERE tel ='" . $_POST['tel-id'] . "'  ")
-            or exit(mysqli_error($con));
-        if (mysqli_num_rows($select)) {
-            $errtel = 'This tel is already being used';
-        }
-    }  // fin !!!!!!!!!!!  
-
-    //!!!!!!!email validation IMPORTANT !!!!!!
-    if (empty($_POST["email-id"])) {
-        $erremail = "Email is required";
-    } else {
-
-        $select = mysqli_query($con, "SELECT id FROM block_liste WHERE email ='" . $_POST['email-id'] . "'  ")
-            or exit(mysqli_error($con));
-        if (mysqli_num_rows($select)) {
-            $erremail = 'This email is already being used';
-        }
-    }  // fin !!!!!!!!!!!  
-
-    //after validation we insert DATA to our DATABASE
-    $today = date("Y-m-d H:i:s");
-    if ($erremail != 'This email is already being used' && $errtel != 'This tel is already being used') {
-        $query = "INSERT INTO client (fullname,email,service_comercial,tel,adresse,block,valider_par,validation,afficher_dans_la_table)VALUE('$name','$email','$service','$phone','$adresse','$f','','$f','$t')";
-        if (mysqli_query($con, $query)) {
-            $err_success = 1;
-            header("location:continue-success.php");
-        }
-    } else {
-        if ($erremail == 'This email is already being used') {
-            $err_warningemail = 1;
-        } else {
-            $err_warningtel = 1;
-        }
-    }
-}
-
-
-
-
+include('validationindex.php');
 
 ?>
 
@@ -135,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($err_warningtel == 1) {
 
-        echo "<div class='alert' text-light role='alert'  style='background:#dc3045 ' >
+        echo "<div class='alert' text-light role='alert'  style='background:#FF6464 ' >
    votre tel a ete bloque  <a href='#telechargement' >voir plus  </a>
 
    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
@@ -145,8 +69,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     if ($err_warningemail == 1) {
 
-        echo "<div class='alert text-light' role='alert'  style='background:#dc3045'>
+        echo "<div class='alert text-light' role='alert'  style='background:#FF6464'>
    votre email a ete bloque  <a href='#telechargement' >voir plus  </a>
+
+   <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+   <span aria-hidden='true'>&times;</span>
+ </button>
   </div>";
     }
     if ($err_success == 1) {
@@ -572,14 +500,14 @@ congratulations
                         <div class="col-md-3 ">
                             <label for="email-id" style="color: white;">Nom et prenom :</label>
 
-                            <input required type="text" autocomplete="on" id="name-id" name="name-id" class="form-control" placeholder="">
+                            <input type="text" autocomplete="on" id="name-id" name="name-id" class="form-control" placeholder="">
 
                             <label style="color: white;" for="subject-id">Telephone :</label> <span class="error" style="color : white;">*<?php echo $errtel; ?></span>
-                            <input required type="tel" autocomplete="on" maxlength=10 id="subject-id" name="tel-id" class="form-control" placeholder="">
+                            <input type="tel" autocomplete="on" maxlength=10 id="subject-id" name="tel-id" class="form-control" placeholder="">
 
 
                             <div class=""> <label style="color: white;" for="message">Activité comercial :</label>
-                                <input required id="subject-id" name="service-id" placeholder="ex : fastfood , decoration ," class="form-control">
+                                <input id="subject-id" name="service-id" placeholder="ex : fastfood , decoration ," class="form-control">
                                 <input class="btn-lg btn-success" style="margin: 20px 0 20px ;  padding-left : 30px;padding-right : 30px; " type="submit" name="" value="Valider">
 
                                 <div class="g-recaptcha" data-sitekey="6Lc1KTIbAAAAAGJtWiZBodd0QD4qZG_RhAOLB-N6"></div>
@@ -591,12 +519,12 @@ congratulations
                         <div class="col-md-4">
                             <label style="color: white;" for="email-id">Email:</label><span class="error" style="color : white;">*<?php echo $erremail; ?></span>
 
-                            <input required type="email" autocomplete="on" id="email-id" name="email-id" class="form-control" placeholder="exemple@exemple.com">
+                            <input type="email" autocomplete="on" id="email-id" name="email-id" class="form-control" placeholder="exemple@exemple.com">
 
 
 
                             <label style="color: white;" for="subject-id">Adresse :</label>
-                            <input required type="text" autocomplete="on" id="subject-id" name="adresse-id" class="form-control" placeholder="">
+                            <input type="text" autocomplete="on" id="subject-id" name="adresse-id" class="form-control" placeholder="">
 
 
                         </div>
@@ -637,21 +565,21 @@ congratulations
                         <div class="contact-form">
                             <p class="full-row">
 
-                                <input required type="text" id="name-contact-id" name="name-id-contact" class="form-control" placeholder="nom et prenom :">
+                                <input type="text" id="name-contact-id" name="name-id-contact" class="form-control" placeholder="nom et prenom :">
                             </p>
                             <p class="full-row">
 
-                                <input required type="text" id="email-id" name="email-id-contact" class="form-control" placeholder="Email :">
+                                <input type="text" id="email-id" name="email-id-contact" class="form-control" placeholder="Email :">
 
 
                             </p>
                             <p class="full-row">
 
-                                <input required type="text" id="subject-id" name="subject-id-contact" class="form-control" placeholder="sujet">
+                                <input type="text" id="subject-id" name="subject-id-contact" class="form-control" placeholder="sujet">
                             </p>
                             <p class="full-row">
                                 <label for="message">Message:</label>
-                                <textarea required name="message-contact" id="message" rows="6" class="form-control" placeholder=""></textarea>
+                                <textarea name="message-contact" id="message" rows="6" class="form-control" placeholder=""></textarea>
                             </p>
                             <input class="mainBtn" type="submit" name="" value="envoyer " class="form-control">
                         </div>
