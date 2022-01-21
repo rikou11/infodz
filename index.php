@@ -34,7 +34,7 @@ include('validationindex.php');
 
 
     <!-- Favicons -->
-    <link rel="shortcut icon" href="Asset 1.svg">
+    <link rel="shortcut icon" href="images/Asset 1.svg">
     <!-- scroll barstyle  -->
     <!-- recaptcha -->
 
@@ -180,7 +180,7 @@ congratulations
     <div class="flexslider">
         <ul class="slides">
             <li>
-                <img src="1179074.jpg" alt="">
+                <img src="images/1179074.jpg" alt="">
                 <div class="flex-caption">
                     <h2 style="font-size: 35px; line-height: 40px;">SOLUTION POINTS DE VENTES<br> MATÉRIEL ET LOGICIEL
                         POINT DE VENTE</h2>
@@ -191,7 +191,7 @@ congratulations
                 </div>
             </li>
             <li>
-                <img src="1179074.jpg" alt="">
+                <img src="images/1179074.jpg" alt="">
                 <div class="flex-caption">
                     <h2 style="font-size: 35px; line-height: 40px;">SOLUTION POINTS DE VENTES
                         <br> MATÉRIEL ET LOGICIEL POINT DE VENTE
@@ -479,7 +479,7 @@ congratulations
     <!-- /.title-section -->
 
 
-    <div class="telechargemenet" style="height: 700px;  background-image: url(picc2.svg);   background-repeat: no-repeat;
+    <div class="telechargemenet" style="height: 700px;  background-image: url('images/picc2.svg');   background-repeat: no-repeat;
   
   background-position: 950px 250px ;
   background-size : 30%;

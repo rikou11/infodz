@@ -98,7 +98,7 @@ include('revendeurValidation.php');  ?>
           </form>
         </div>
         <div class="signup-image hidden-xs">
-          <figure><img src="signup.svg" alt="sing up image"></figure>
+          <figure><img src="images/signup.svg" alt="sing up image"></figure>
 
         </div>
       </div>
