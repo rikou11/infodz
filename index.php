@@ -485,7 +485,7 @@ congratulations
   background-size : 30%;
   background-color:#dc3045;
   ">
-        <form class="container" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data" method="POST" autocomplete="on">
+        <form class="container" id="my_captcha_form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data" method="POST" autocomplete="on">
             <div>
                 <div class="title-section text-center">
                     <h2 style="color: white;" id="telechargement">Telechargement</h2>
@@ -508,9 +508,9 @@ congratulations
 
                             <div class=""> <label style="color: white;" for="message">Activité comercial :</label>
                                 <input id="subject-id" name="service-id" placeholder="ex : fastfood , decoration ," class="form-control">
-                                <input class="btn-lg btn-success" style="margin: 20px 0 20px ;  padding-left : 30px;padding-right : 30px; " type="submit" name="" value="Valider">
+                                <input id="btnSubmit" class="btn-lg btn-success" style="margin: 20px 0 20px ;  padding-left : 30px;padding-right : 30px; " type="submit" name="" value="Valider">
 
-                                <div class="g-recaptcha" data-sitekey="6Lc1KTIbAAAAAGJtWiZBodd0QD4qZG_RhAOLB-N6"></div>
+                                <div required class="g-recaptcha" data-sitekey="6Lc1KTIbAAAAAGJtWiZBodd0QD4qZG_RhAOLB-N6"></div>
 
                             </div>
 
@@ -661,7 +661,21 @@ congratulations
             document.getElementById("myBar").style.width = scrolled + "%";
         }
     </script>
+    <script>
+        document.getElementById("my_captcha_form").addEventListener("submit", function(evt) {
 
+            var response = grecaptcha.getResponse();
+            if (response.length == 0) {
+                //reCaptcha not verified
+                alert("recaptcha ! ");
+                evt.preventDefault();
+                return false;
+            }
+            //captcha verified
+            //do the rest of your validations here
+
+        });
+    </script>
 </body>
 
 </html>
