@@ -28,8 +28,19 @@ if (isset($_GET["delete"])) {
 };
 
 /* date function */
-$today = date("Y-m-d H:i:s");
+/* echo $today = date("Y-m-d H:i:s");
+ */
 
+$startTime = date("Y-m-d H:i:s");
+
+//display the starting time
+/* echo 'Starting Time: ' . $startTime;
+ */
+//add 1 hour to time
+$today = date('Y-m-d H:i:s', strtotime('+1 hour', strtotime($startTime)));
+
+//display the converted time
+/* echo 'Converted Time (added 1 hour): ' . $today; */
 
 
 /* valider */

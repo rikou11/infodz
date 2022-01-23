@@ -43,3 +43,16 @@ if (isset($_GET["block"]) || isset($_GET["tel"]) || isset($_GET["email"]) || iss
     header("location:ADliste-validation");
   }
 }
+function timeDiff($firstTime, $lastTime)
+{
+
+  // convert to unix timestamps
+  $firstTime = strtotime($firstTime);
+  $lastTime = strtotime($lastTime);
+
+  // perform subtraction to get the difference (in seconds) between times
+  $timeDiff = $lastTime - $firstTime;
+
+  // return the difference
+  return $timeDiff;
+}

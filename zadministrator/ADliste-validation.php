@@ -27,10 +27,7 @@ include("php/tableau-validation.php");
   <link rel="stylesheet" href="../css/dashboardadmin.css">
 
   <!-- jquerry -->
-  <!--   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
 
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
- -->
 
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css" />
 
@@ -76,18 +73,21 @@ include("php/tableau-validation.php");
     <?php endwhile; ?>
 
   </nav>
+
+
   <!-- end nav -->
   <div class="container">
-    <h2 style="margin-top: 50px;  color : green;"><i class="fas fa-user-check"></i> les validations</h2>
+    <h2 style="margin-top: 50px;  color : green; width:50rem"><i class="fas fa-user-check"></i> les validations</h2>
 
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-      <table class="table table-striped table-hover" id="myTable" data-order='[[ 1, "asc" ]]' data-page-length='25'>
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" style="">
+      <table class="table table-striped table-hover" id="myTable" data-order='[[ 1, "desc" ]]' data-page-length='25'>
         <thead>
 
           <tr>
             <th scope="col">id</th>
             <th scope="col">date d'inscription</th>
             <th scope="col">date de validation</th>
+            <th scope="col">temp de validation</th>
 
             <th scope="col">Nom & Prenom</th>
             <th scope="col">tele:</th>
@@ -108,7 +108,13 @@ include("php/tableau-validation.php");
             <td>#<?php echo $row["id"] ?></td>
             <td><?php echo $row["date_demande"] ?></td>
             <td><?php echo $row["date_validation"] ?></td>
-
+            <td> <?php
+                  $difference = timeDiff($row["date_demande"], $row["date_validation"]);
+                  $years = abs(floor($difference / 31536000));
+                  $days = abs(floor(($difference - ($years * 31536000)) / 86400));
+                  $hours = abs(floor(($difference - ($years * 31536000) - ($days * 86400)) / 3600));
+                  $mins = abs(floor(($difference - ($years * 31536000) - ($days * 86400) - ($hours * 3600)) / 60)); #floor($difference / 60);
+                  echo "<p> " . $days . " jrs,<br> " . $hours . " h <br>" . $mins . " min.</p>";  ?></td>
             <td><?php echo $row["fullname"] ?></td>
             <td>0<?php echo $row["tel"] ?></td>
             <td><?php echo $row["adresse"] ?></td>

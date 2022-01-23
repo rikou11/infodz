@@ -80,7 +80,7 @@ include("php/validation-admin.php");
     <h2 style="margin-top: 50px;  color : green;"><i class="fas fa-user-check"></i> les validations</h2>
 
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-      <table class="table table-striped table-hover" id="myTable" data-order='[[ 1, "asc" ]]' data-page-length='25'>
+      <table class="table table-striped table-hover" id="myTable" data-order='[[ 1, "desc" ]]' data-page-length='25'>
         <thead>
 
           <tr>

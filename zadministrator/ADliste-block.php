@@ -74,7 +74,7 @@ include("php/tableau-block.php");
     <h2 style="margin-top: 50px;  color : red;"> <i class="fas fa-exclamation-triangle"></i> liste des clients bloque</h2>
 
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-      <table class="table table-striped table-hover" id="myTable" data-order='[[ 1, "asc" ]]' data-page-length='10'>
+      <table class="table table-striped table-hover" id="myTable" data-order='[[ 1, "desc" ]]' data-page-length='10'>
         <thead>
 
           <tr>

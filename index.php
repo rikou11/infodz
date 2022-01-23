@@ -162,7 +162,7 @@ congratulations
                                 <li><a href="#contact">Contact</a></li>
 
 
-                            </ul>
+                            </ul><!--  -->
                         </div> <!-- /.menu -->
                     </div> <!-- /.responsive-menu -->
                 </div> <!-- /.container -->
